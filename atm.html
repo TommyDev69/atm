@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <html>
+<head>
+<title>atm</title>
+</head>
+<body>
+<form>
+    Please Enter Your Pin Number:<input type="text" name="number" id="number" >
+    <button type="button" name="submit" id="submit" onclick="getaction()">OK </button>
+    <p id="demo"> </p>
+
+    <div id="options" style="display:none;">
+        <input type='radio' name='radio' onclick='tommy(value)' value='1'>Balance
+        <input type='radio' name='radio' onclick='tommy(value)' value='2'>Withdraw
+        <input type='radio' name='radio' onclick='tommy(value)' value='3'>Loan
+    </div>
+    <p id="demo1"></p>
+
+    <div id="display" style="display:none;">
+        <label>Please Enter Your Withdraw Amount</label>
+        <input type="text" name="amount1" id="amount1" value="">
+        <input type="submit" name="submit1" value="submit" onclick="withdraws()">
+        
+
+    </div>
+    <p id="answer"></p>
+
+    <div id="display1" style="display:none;">
+        <label>Please Select Your Fastcash Option</label>
+            <select id="myselect1">
+            <option value="10000">10000</option>
+            <option value ="20000">20000</option>
+            <option value ="50000">50000</option>
+        </select>
+        <button type="submit" name="submit2" onclick="getAmount()"> SUBMIT </button>
+    </div>
+
+</form>
+<script type="text/javascript">
+    function getaction(){
+        //Intialise Pin value with varible P
+        var p = document.getElementById ('number').value;
+        var a = Number(p);
+        // p tag of demo & option
+        var result =  document.getElementById ("demo")
+        var options =  document.getElementById ("options")
+
+
+        //To check Pin entered is correct or not
+        if(p == a){
+            result.innerHTML ="Please Choose transaction";
+            options.style.display = 'block'; //if pin number is correct options will Display in the visual style.
+        }
+        else{
+            result.innerHTML = "Invalid pin";
+        }
+    
+    }
+
+     //function to display balance amount
+    function tommy(value){
+        let result1 = document.getElementById('demo1')
+        let balance= 10000;
+
+        //Option 1 is select to shows balance amount
+        if(value== 1){
+            result1.innerHTML ="Your amount is:" + balance;
+        document.getElementById ('display').style.display = 'block';
+        document.getElementById ('display').style.display = 'none';
+
+
+              
+        }
+        // result1.innerHTML ="" 
+        if(value==2){//Option 2 select to display text field to enter withdraw amount
+        document.getElementById ('display').style.display = 'block';
+        document.getElementById ('display1').style.display = 'none';
+        }
+        if(value==3)//Option 3 is select to display fastcash option
+        {
+        document.getElementById ('display1').style.display = 'block';
+        document.getElementById ('display').style.display = 'none';
+        }
+    }
+    
+
+    function withdraws(){
+        //function To Withdraw Amount
+        let  amount = 10000;
+
+        var a = document.getElementById ('amount1') .value;
+
+        let answer = Number(amount) - Number(a)
+       
+
+
+        let bring = document.getElementById('answer')
+
+        //Check if entered amount is greater than the original amount or not and it also should be mulitple of 100
+        if(a<= amount && a % 100 ==0 ){
+            document.getElementById ('display').innerHTML ="Your withdraw amount : " +a;
+            bring.innerHTML ="Your remain balance : " +answer;
+            
+        }   
+
+        else{
+          document.getElementById ('display').innerHTML ="Invalid cash";
+            
+        }            
+        
+    }
+          
+    function getAmount(){
+        // Intialise the Dropdown value in a varible
+        var x = document.getElementById ("myselect1").value
+        let loan = 10000;
+
+        if(x<= loan && x % 100==0){
+            //alert("take your amount" +x);
+             ndocument.getElementById ('display1').innerHTML ="Please take your amount : "+x;
+        }
+        else{
+          document.getElementById ('display1').innerHTML ="Invalid cash";
+        }
+    }
+
+    
+    </script>
+</body>
+</html>
